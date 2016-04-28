@@ -10,6 +10,7 @@ KeyCodes =
   L: 76
   F: 70
 
+incr = 1
 
 class @KeyboardControl
 
@@ -61,38 +62,38 @@ class @KeyboardControl
   keyDown: (e) =>
     switch e.keyCode
       when KeyCodes.W
-        @throttle += 10
+        @throttle += incr
         @throttle = 0xFF if @throttle > 0xFF
         @sendCommand("/control?throttle=#{@throttle}")
       when KeyCodes.S
-        @throttle -= 10
+        @throttle -= incr
         @throttle = 0 if @throttle < 0
         @sendCommand("/control?throttle=#{@throttle}")
 
       when KeyCodes.A
-        @rudder -= 10
+        @rudder -= incr
         @rudder = 0x34 if @rudder < 0x34
         @sendCommand("/control?rudder=#{@rudder}")
       when KeyCodes.D
-        @rudder += 10
+        @rudder += incr
         @rudder = 0xCC if @rudder > 0xCC
         @sendCommand("/control?rudder=#{@rudder}")
 
       when KeyCodes.Up
-        @elevator += 10
+        @elevator += incr
         @elevator = 0xBC if @elevator > 0xBC
         @sendCommand("/control?elevator=#{@elevator}")
       when KeyCodes.Down
-        @elevator -= 10
+        @elevator -= incr
         @elevator = 0x3E if @elevator < 0x3E
         @sendCommand("/control?elevator=#{@elevator}")
 
       when KeyCodes.Left
-        @aileron -= 10
+        @aileron -= incr
         @aileron = 0x45 if @aileron < 0x45
         @sendCommand("/control?aileron=#{@aileron}")
       when KeyCodes.Right
-        @aileron += 10
+        @aileron += incr
         @aileron = 0xC3 if @aileron > 0xC3
         @sendCommand("/control?aileron=#{@aileron}")
 

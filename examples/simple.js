@@ -1,5 +1,5 @@
 var coptermanager = require('coptermanager-simple');
-var client = new coptermanager.Client({serialport: '/dev/tty.usbmodem1411'});
+var client = new coptermanager.Client({serialport: '/dev/ttyACM0'});
 
 client.bind(function() {
 
